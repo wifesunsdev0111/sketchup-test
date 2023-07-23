@@ -1,0 +1,364 @@
+# inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-performance
+  - rubocop-sketchup
+
+AllCops:
+  DisabledByDefault: true # TODO: Reenable
+  DisplayStyleGuide: true
+  SketchUp:
+    SourcePath: src
+    TargetSketchUpVersion: 2014
+    SketchupPerformance:
+      Exclude:
+      - ruby-c-extension/**/*
+      - skippy/**/*
+      - tests/**/*
+      - tools/**/*
+    SketchupRequirements:
+      Exclude:
+      - ruby-c-extension/**/*
+      - skippy/**/*
+      - tests/**/*
+      - tools/**/*
+    SketchupSuggestions:
+      Exclude:
+      - ruby-c-extension/**/*
+      - skippy/**/*
+      - tests/**/*
+      - tools/**/*
+  TargetRubyVersion: 2.0
+  Exclude:
+  - archive/**/*
+  - build/**/*
+  - dialogs/**/*
+  - docs/**/*.rb
+  - node_modules/**/*
+  - ruby-c-extension/**/*.rb
+  - src/testup/third-party/**/*.rb
+  - tests/**/*.rb # TODO - for now ignore.
+  - tools/**/*.rb
+
+SketchupDeprecations:
+  Enabled: true
+
+SketchupPerformance:
+  Enabled: true
+
+SketchupRequirements:
+  Enabled: true
+
+SketchupSuggestions:
+  Enabled: true
+
+SketchupBugs:
+  Enabled: true
+
+SketchupSuggestions/FileEncoding:
+  Enabled: false
+
+# I will align my arrays as I please!
+Layout/ArrayAlignment:
+  Enabled: false
+
+# It's ok to use double empty lines for "paragraphs".
+Layout/EmptyLines:
+  Enabled: false
+
+# Extra space is fine.
+Layout/EmptyLinesAroundClassBody:
+  Enabled: false
+
+# Extra space is fine.
+Layout/EmptyLinesAroundModuleBody:
+  Enabled: false
+
+# RuboCop - why you hate white-space?
+Layout/EmptyLinesAroundBlockBody:
+  Enabled: false
+
+# It's ok to have two empty lines to create "paragraphs".
+Layout/EmptyLineBetweenDefs:
+  Enabled: false # TODO: Reenable
+  NumberOfEmptyLines: [1, 2]
+
+# Let git handle and normalize end of line. Easier for Windows.
+Layout/EndOfLine:
+  Enabled: false
+
+# Spaces are fine to line up matrices etc to be more readable.
+Layout/ExtraSpacing:
+  Enabled: false
+
+# This project use 4 spaces for continuity-lines.
+Layout/FirstArrayElementIndentation:
+  Enabled: false
+
+# This project use 4 spaces for continuity-lines.
+Layout/FirstHashElementIndentation:
+  Enabled: false
+
+# Spaces are fine to line up matrices etc to be more readable.
+Layout/SpaceInsideArrayLiteralBrackets:
+  Enabled: false
+
+# Too noisy...
+Metrics/AbcSize:
+  Enabled: false
+
+# Tests should have not upper size limit.
+Metrics/ClassLength:
+  Enabled: false # TODO: Reenable
+  Exclude:
+    - 'tests/**/*'
+
+# Too noisy...
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+# TODO: Re-enable after addressing .rubocop_todo.yml
+# Allowing for a few more lines than the default 10.
+# Metrics/MethodLength:
+  # Max: 20
+
+# Too noisy...
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+# Tests follow a different naming convention.
+Naming/ClassAndModuleCamelCase:
+  Exclude:
+    - 'tests/**/*.rb'
+
+# Tests follow a different naming convention.
+Naming/FileName:
+  Exclude:
+    - 'tests/**/*.rb'
+
+# Tool classes must use the SketchUp API method names.
+Naming/MethodName:
+  Exclude:
+    - '**/*_tool.rb'
+
+# Variables such as x, y, z; u, v; r, g, b, is all too common within the world
+# of 3D and their meaning is clear.
+# TODO: Configure allowed names.
+Naming/MethodParameterName:
+  Enabled: false
+
+# It's ok to use {...} for multi-line blocks.
+Style/BlockDelimiters:
+  Enabled: false
+
+# Compact style is fine.
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+# Nah, it's ok.
+Style/CommentedKeyword:
+  Enabled: false
+
+# No need for a doc-block for each class/module.
+Style/Documentation:
+  Enabled: false
+
+# Some times it simply reads better to not have a modifier conditional.
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/MultilineIfModifier:
+  Exclude:
+    - src/testup/file_reporter.rb
+    - src/testup/ui.rb
+    - src/testup/ui/adapters/htmldialog.rb
+
+# No need to force `.zero` over `== 0`
+Style/NumericPredicate:
+  Enabled: false
+
+# It's fine to refer to self.
+Style/RedundantSelf:
+  Enabled: false
+
+# There would be so many files touched to fix this. Ignoring for now.
+Style/StringLiterals:
+  Enabled: false # TODO
+
+# It's fine to have trailing comma, makes adding/removing items easier.
+Style/TrailingCommaInArrayLiteral:
+  Enabled: false
+
+Style/TrailingCommaInHashLiteral:
+  Enabled: false
+
+
+
+# Gemspec/DeprecatedAttributeAssignment: # new in 1.30
+#   Enabled: true
+# Gemspec/RequireMFA: # new in 1.23
+#   Enabled: true
+# Layout/LineContinuationLeadingSpace: # new in 1.31
+#   Enabled: true
+# Layout/LineContinuationSpacing: # new in 1.31
+#   Enabled: true
+# Layout/LineEndStringConcatenationIndentation: # new in 1.18
+#   Enabled: true
+# Layout/SpaceBeforeBrackets: # new in 1.7
+#   Enabled: true
+# Lint/AmbiguousAssignment: # new in 1.7
+#   Enabled: true
+# Lint/AmbiguousOperatorPrecedence: # new in 1.21
+#   Enabled: true
+# Lint/AmbiguousRange: # new in 1.19
+#   Enabled: true
+# Lint/ConstantOverwrittenInRescue: # new in 1.31
+#   Enabled: true
+# Lint/DeprecatedConstants: # new in 1.8
+#   Enabled: true
+# Lint/DuplicateBranch: # new in 1.3
+#   Enabled: true
+# Lint/DuplicateRegexpCharacterClassElement: # new in 1.1
+#   Enabled: true
+# Lint/EmptyBlock: # new in 1.1
+#   Enabled: true
+# Lint/EmptyClass: # new in 1.3
+#   Enabled: true
+# Lint/EmptyInPattern: # new in 1.16
+#   Enabled: true
+# Lint/IncompatibleIoSelectWithFiberScheduler: # new in 1.21
+#   Enabled: true
+# Lint/LambdaWithoutLiteralBlock: # new in 1.8
+#   Enabled: true
+# Lint/NoReturnInBeginEndBlocks: # new in 1.2
+#   Enabled: true
+# Lint/NonAtomicFileOperation: # new in 1.31
+#   Enabled: true
+# Lint/NumberedParameterAssignment: # new in 1.9
+#   Enabled: true
+# Lint/OrAssignmentToConstant: # new in 1.9
+#   Enabled: true
+# Lint/RedundantDirGlobSort: # new in 1.8
+#   Enabled: true
+# Lint/RefinementImportMethods: # new in 1.27
+#   Enabled: true
+# Lint/RequireRangeParentheses: # new in 1.32
+#   Enabled: true
+# Lint/RequireRelativeSelfPath: # new in 1.22
+#   Enabled: true
+# Lint/SymbolConversion: # new in 1.9
+#   Enabled: true
+# Lint/ToEnumArguments: # new in 1.1
+#   Enabled: true
+# Lint/TripleQuotes: # new in 1.9
+#   Enabled: true
+# Lint/UnexpectedBlockArity: # new in 1.5
+#   Enabled: true
+# Lint/UnmodifiedReduceAccumulator: # new in 1.1
+#   Enabled: true
+# Lint/UselessRuby2Keywords: # new in 1.23
+#   Enabled: true
+# Naming/BlockForwarding: # new in 1.24
+#   Enabled: true
+# Security/CompoundHash: # new in 1.28
+#   Enabled: true
+# Security/IoMethods: # new in 1.22
+#   Enabled: true
+# Style/ArgumentsForwarding: # new in 1.1
+#   Enabled: true
+# Style/CollectionCompact: # new in 1.2
+#   Enabled: true
+# Style/DocumentDynamicEvalDefinition: # new in 1.1
+#   Enabled: true
+# Style/EmptyHeredoc: # new in 1.32
+#   Enabled: true
+# Style/EndlessMethod: # new in 1.8
+#   Enabled: true
+# Style/EnvHome: # new in 1.29
+#   Enabled: true
+# Style/FetchEnvVar: # new in 1.28
+#   Enabled: true
+# Style/FileRead: # new in 1.24
+#   Enabled: true
+# Style/FileWrite: # new in 1.24
+#   Enabled: true
+# Style/HashConversion: # new in 1.10
+#   Enabled: true
+# Style/HashExcept: # new in 1.7
+#   Enabled: true
+# Style/IfWithBooleanLiteralBranches: # new in 1.9
+#   Enabled: true
+# Style/InPatternThen: # new in 1.16
+#   Enabled: true
+# Style/MagicCommentFormat: # new in 1.35
+#   Enabled: true
+# Style/MapCompactWithConditionalBlock: # new in 1.30
+#   Enabled: true
+# Style/MapToHash: # new in 1.24
+#   Enabled: true
+# Style/MultilineInPatternThen: # new in 1.16
+#   Enabled: true
+# Style/NegatedIfElseCondition: # new in 1.2
+#   Enabled: true
+# Style/NestedFileDirname: # new in 1.26
+#   Enabled: true
+# Style/NilLambda: # new in 1.3
+#   Enabled: true
+# Style/NumberedParameters: # new in 1.22
+#   Enabled: true
+# Style/NumberedParametersLimit: # new in 1.22
+#   Enabled: true
+# Style/ObjectThen: # new in 1.28
+#   Enabled: true
+# Style/OpenStructUse: # new in 1.23
+#   Enabled: true
+# Style/QuotedSymbols: # new in 1.16
+#   Enabled: true
+# Style/RedundantArgument: # new in 1.4
+#   Enabled: true
+# Style/RedundantInitialize: # new in 1.27
+#   Enabled: true
+# Style/RedundantSelfAssignmentBranch: # new in 1.19
+#   Enabled: true
+# Style/SelectByRegexp: # new in 1.22
+#   Enabled: true
+# Style/StringChars: # new in 1.12
+#   Enabled: true
+# Style/SwapValues: # new in 1.1
+#   Enabled: true
+# Performance/AncestorsInclude: # new in 1.7
+#   Enabled: true
+# Performance/BigDecimalWithNumericArgument: # new in 1.7
+#   Enabled: true
+# Performance/BlockGivenWithExplicitBlock: # new in 1.9
+#   Enabled: true
+# Performance/CollectionLiteralInLoop: # new in 1.8
+#   Enabled: true
+# Performance/ConcurrentMonotonicTime: # new in 1.12
+#   Enabled: true
+# Performance/ConstantRegexp: # new in 1.9
+#   Enabled: true
+# Performance/MapCompact: # new in 1.11
+#   Enabled: true
+# Performance/MethodObjectAsBlock: # new in 1.9
+#   Enabled: true
+# Performance/RedundantEqualityComparisonBlock: # new in 1.10
+#   Enabled: true
+# Performance/RedundantSortBlock: # new in 1.7
+#   Enabled: true
+# Performance/RedundantSplitRegexpArgument: # new in 1.10
+#   Enabled: true
+# Performance/RedundantStringChars: # new in 1.7
+#   Enabled: true
+# Performance/ReverseFirst: # new in 1.7
+#   Enabled: true
+# Performance/SortReverse: # new in 1.7
+#   Enabled: true
+# Performance/Squeeze: # new in 1.7
+#   Enabled: true
+# Performance/StringIdentifierArgument: # new in 1.13
+#   Enabled: true
+# Performance/StringInclude: # new in 1.7
+#   Enabled: true
+# Performance/Sum: # new in 1.8
+#   Enabled: true
